@@ -1,0 +1,14 @@
+[extensions]
+progress =
+color =
+rebase =
+histedit =
+mq =
+[ui]
+username = Tommaso Visconti <tommaso.visconti@gmail.com>
+[diff]
+git = 1
+showfunc = 1
+unified = 8
+[defaults]
+qnew = -U
