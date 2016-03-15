@@ -9,7 +9,7 @@ indent_style = space
 insert_final_newline = true
 trim_trailing_whitespace = true
 
-[*.{js,coffee,rb,css,html,jsx}]
+[*.{js,coffee,rb,css,html,jsx,c}]
 indent_size = 2
 
 [*.go]
