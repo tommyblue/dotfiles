@@ -9,7 +9,16 @@ indent_style = space
 insert_final_newline = true
 trim_trailing_whitespace = true
 
-[*.{js,coffee,rb,css,html,jsx}]
+[*.md]
+trim_trailing_whitespace = false
+
+[*.{rb,css,html}]
+indent_size = 4
+
+[*.{ex,exs}]
+indent_size = 2
+
+[*.{ts,tsx,js,coffee,jsx}]
 indent_size = 4
 
 [*.{c,h,cpp}]
