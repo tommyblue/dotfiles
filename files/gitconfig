@@ -9,7 +9,7 @@
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 	amend = commit --amend -C HEAD
 [core]
-	excludesfile = ~/.gitignore_global
+	excludesfile = $HOME/.gitignore_global
 	filemode = false
 	editor = /usr/bin/vim
 [difftool "sourcetree"]
