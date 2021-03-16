@@ -7,17 +7,14 @@
 	ci = commit
 	br = branch
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-	amend = commit --amend -C HEAD
+    # pretty logging: full tree
+    ll = log --all --graph --abbrev-commit --date=relative
+    # pretty logging: only commits leading to HEAD
+    lol= log --pretty=oneline --abbrev-commit --graph --decorate
 [core]
 	excludesfile = $HOME/.gitignore_global
 	filemode = false
 	editor = /usr/bin/vim
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path =
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
 [color]
 	ui = true
 	branch = auto
@@ -26,10 +23,8 @@
 	status = auto
 [push]
 	default = tracking
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	required = true
-	process = git-lfs filter-process
 [url "git@github.com:"]
 	insteadOf = https://github.com/
+[pager]
+    # old behaviour: print branches instead of `less` view
+    branch = false
