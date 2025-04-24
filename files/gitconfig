@@ -1,3 +1,41 @@
+# https://blog.gitbutler.com/how-git-core-devs-configure-git/
+#[column]
+#        ui = auto
+[branch]
+        sort = -committerdate
+[tag]
+        sort = version:refname
+[init]
+        defaultBranch = main
+[diff]
+        algorithm = histogram
+	colorMoved = plain
+        mnemonicPrefix = true
+	renames = true
+[push]
+        default = simple
+	autoSetupRemote = true
+        followTags = true
+[fetch]
+        prune = true
+        pruneTags = true
+        all = true
+[help]
+        autocorrect = prompt
+[commit]
+        verbose = true
+[rerere]
+        enabled = true
+        autoupdate = true
+[rebase]
+        autoSquash = true
+        autoStash = true
+        updateRefs = true
+[merge]
+        # (just 'diff3' if git version < 2.3)
+        conflictstyle = zdiff3 
+[pull]
+        rebase = true
 [user]
 	name = Tommaso Visconti
 	email = tommaso.visconti@gmail.com
@@ -7,24 +45,31 @@
 	ci = commit
 	br = branch
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-    # pretty logging: full tree
-    ll = log --all --graph --abbrev-commit --date=relative
-    # pretty logging: only commits leading to HEAD
-    lol= log --pretty=oneline --abbrev-commit --graph --decorate
+    	ll = log --all --graph --abbrev-commit --date=relative
+    	lol= log --pretty=oneline --abbrev-commit --graph --decorate
+	rel=! git log $1..HEAD --decorate --color=auto --merges --first-parent --pretty=%b
+	adog = log --all --decorate --oneline --graph
 [core]
-	excludesfile = $HOME/.gitignore_global
+	excludesfile = ~/.gitignore_global
 	filemode = false
 	editor = /usr/bin/vim
+	#fsmonitor = true
+        #untrackedCache = true
 [color]
 	ui = true
 	branch = auto
 	diff = auto
 	interactive = auto
 	status = auto
-[push]
-	default = tracking
 [url "git@github.com:"]
 	insteadOf = https://github.com/
 [pager]
     # old behaviour: print branches instead of `less` view
     branch = false
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[init]
+	defaultBranch = main
